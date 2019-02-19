@@ -1,0 +1,10 @@
+{
+  "name": "breakr",
+  "version": "1.0.0",
+  "description": "A workforce management web app.",
+  "main": "index.js",
+  "repository": "https://github.com/codypotter/breakr.git",
+  "author": "Cody Potter",
+  "license": "MIT",
+  "private": false
+}
