@@ -1,5 +1,19 @@
-$primary-color: blue;
 
-h1 {
-    color: $primary-color;
-}
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+$theme-colors: (
+  "primary": #07689F,
+  "secondary": #C9D6DF,
+  "info": #A2D5F2,
+  "success": #11D3BC,
+  "warning": #FF7E67,
+  "danger": #F67280,
+  "light": #FAFAFA,
+  "dark": #4E4E4E
+);
+
+// $body-bg: #2a3442;
+// $body-color: white;
+
+ @import "../../node_modules/bootstrap/scss/bootstrap.scss";
