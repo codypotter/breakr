@@ -4,6 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
+
 export default class EmployeeList extends React.Component {
   constructor(props) {
     super(props);
@@ -18,16 +19,17 @@ export default class EmployeeList extends React.Component {
         
         <h5>Cashiers</h5>
         <ListGroup>
-          <ListGroup.Item variant="warning">
+          <ListGroup.Item variant="success">
             Sean - On Break
+            <ProgressBar variant="success" now="10" label="Send Break @5:45 pm" />
           </ListGroup.Item>
           <ListGroup.Item>
             Becki
-            <ProgressBar variant="danger" now="90" label="Send Home @ 4:00 pm" />
+            <ProgressBar variant="danger" now="90" label="Send Home @4:00 pm" />
           </ListGroup.Item>
           <ListGroup.Item>
-            Chel
-            <ProgressBar variant="warning" now="75" label="Send Break @ 4:20 pm" />
+            Lorrie
+            <ProgressBar variant="warning" now="75" label="Send Break @4:20 pm" />
           </ListGroup.Item>
         </ListGroup>  
         

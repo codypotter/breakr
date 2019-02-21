@@ -13,17 +13,19 @@ export default class Header extends React.Component {
   }
   render() {
     return (
-      <Navbar bg="primary" variant="dark">
+      <Navbar expand="lg" bg="primary" variant="dark">
         <Navbar.Brand href="#">breakr</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav>
+          <Nav className="mr-auto">
             <NavDropdown title="Organization" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#">WFM Laurelhurst</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#">Create</NavDropdown.Item>
             </NavDropdown>
             <input type="date" />
+          </Nav>
+          <Nav>
             <Nav.Link href="#">logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
