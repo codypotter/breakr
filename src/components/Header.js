@@ -2,13 +2,22 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import moment from 'moment';
 
-
+/** Class representing a Header subclassed from React.Component */
 export default class Header extends React.Component {
+  /**
+   * 
+   * @param {object}  props - React props
+   * @param {string}  props.date - current date in YYYY-MM-DD format
+   * @param {string}  props.organization - name of the active organization
+   * @param {Array}   props.organizations - Array of available organization names 
+   * 
+   */
   constructor(props) {
     super(props);
     this.state = {
-      date: this.props.selectedDate,
+      date: this.props.date,
       organization: this.props.organization,
       organizations: this.props.organizations
     };
@@ -19,6 +28,10 @@ export default class Header extends React.Component {
     this.handleOrganizationChange = this.handleOrganizationChange.bind(this);
   }
 
+  /**
+   * Handle the next
+   * @param {*} event 
+   */
   handleDateChange(event) {
     this.setState({
       ...this.state,
@@ -74,5 +87,10 @@ export default class Header extends React.Component {
 }
 
 Header.defaultProps = {
-  organization: "Organization"
+  organization: "Organization",
+  organizations: [{
+    key: "1",
+    title: "Whole Foods Laurelhurst"
+  }],
+  date: moment().format("YYYY-MM-DD")
 }

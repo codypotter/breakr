@@ -1,46 +1,41 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {createStore} from 'redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Header from "./Header";
 import Board from './Board';
-import moment from 'moment';
+
+const store = createStore(()=>{});
 
 class Fifteen30App extends React.Component {
   constructor(props) {
     super(props);
 
-    const currentDate = moment().format("YYYY-MM-DD");
-
     this.state = {
-      selectedDate: currentDate
+      
     };
 
     this.handleDateChange = this.handleDateChange.bind(this);
   }
 
   handleDateChange(newDate) {
-    this.setState({
-      ...this.state,
-      selectedDate: newDate
-    });
+
   }
   
   render() {
     return (
-      <div>
-        <Header 
-          onDateChange={this.handleDateChange}
-          selectedDate={this.state.selectedDate}
-          organization="Whole Foods Laurelhurst"
-          organizations={[{
-            key: "1",
-            title: "Whole Foods Laurelhurst"
-          }]}
-        />
-        <Board />
-      </div>
+      <Provider store={store}>
+        <Router>
+          <div>
+            <Header />
+            <Route exact path="/" component={Board} />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
 
-ReactDOM.render(<Fifteen30App />, document.getElementById('app'));
+ReactDOM.render(<Fifteen30App store={store} />, document.getElementById('app'));
   
