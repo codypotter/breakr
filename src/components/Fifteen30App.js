@@ -4,7 +4,7 @@ import Header from "./Header";
 import Board from './Board';
 import moment from 'moment';
 
-class BreakrApp extends React.Component {
+class Fifteen30App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,12 +25,16 @@ class BreakrApp extends React.Component {
   }
   
   render() {
-    console.log(this.state);
     return (
       <div>
         <Header 
           onDateChange={this.handleDateChange}
           selectedDate={this.state.selectedDate}
+          organization="Whole Foods Laurelhurst"
+          organizations={[{
+            key: "1",
+            title: "Whole Foods Laurelhurst"
+          }]}
         />
         <Board />
       </div>
@@ -38,5 +42,5 @@ class BreakrApp extends React.Component {
   }
 }
 
-ReactDOM.render(<BreakrApp />, document.getElementById('app'));
+ReactDOM.render(<Fifteen30App />, document.getElementById('app'));
   
