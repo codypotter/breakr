@@ -1,14 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import {createStore} from 'redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Header from "./Header";
-import Board from './Board';
+import AppRouter from '../routers/AppRouter';
+
 
 const store = createStore(()=>{});
 
-class Fifteen30App extends React.Component {
+export default class Fifteen30App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,16 +24,9 @@ class Fifteen30App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <div>
-            <Header />
-            <Route exact path="/" component={Board} />
-          </div>
-        </Router>
+        <AppRouter />
       </Provider>
     );
   }
 }
-
-ReactDOM.render(<Fifteen30App store={store} />, document.getElementById('app'));
   
