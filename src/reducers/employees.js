@@ -10,9 +10,9 @@ const addEmployee = ({name, id, checkpoints}) => ({
   checkpoints
 });
 
-// EDIT_EMPLOYEE
-const editEmployee = (updates) => ({
+const editEmployee = (id, updates) => ({
   type: 'EDIT_EMPLOYEE',
+  id,
   updates
 });
 
@@ -34,11 +34,23 @@ const store = createStore((state = {}, action) => {
         [id]: {
           id,
           name,
-          checkpoints: checkpoints
+          checkpoints
         }
       };
     case 'EDIT_EMPLOYEE':
-      
+      return {
+        ...state,
+        [action.id]: {
+          ...action.updates
+        }
+      }
+    case 'REMOVE_EMPLOYEE':
+      return Object.keys(state)
+        .filter(key => key !== action.id)
+        .reduce((result, current) => {
+          result[current] = state[current];
+          return result;
+      }, {});
     default:
       return state;
   }
