@@ -31,10 +31,10 @@ const clearOrganizations = () => ({
 });
 
 /**
- * Employee Category Reducer
+ * Organizations Reducer
  * Interacts with employee categories in the store
  */
-const employeeCategoriesStore = createStore((state = {}, action) => {
+const organizationsStore = createStore((state = {}, action) => {
   switch (action.type) {
     case 'ADD_ORGANIZATION':
       const {

@@ -54,6 +54,7 @@ const employeeStore = createStore((state = {}, action) => {
       return {
         ...state,
         [action.id]: {
+          ...state[action.id],
           ...action.updates
         }
       }
