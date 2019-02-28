@@ -1,8 +1,10 @@
-import uuid from 'uuid';
+//TODO: Fix exports
 
-/*
-  Action Generators
-*/
+/**
+ * Add Employee Action Generator
+ * Returns an action with data to add a new employee to the store
+ * @param {object} payload includes the name, id, and checkpoints of a new employee 
+ */
 const addEmployee = ({name, id, checkpoints}) => ({
   type: 'ADD_EMPLOYEE',
   name,
@@ -10,22 +12,33 @@ const addEmployee = ({name, id, checkpoints}) => ({
   checkpoints
 });
 
+/**
+ * Edit Employee Action Generator
+ * Returns an action with data to edit an employee in the store
+ * @param {string} id 
+ * @param {Object} updates 
+ */
 const editEmployee = (id, updates) => ({
   type: 'EDIT_EMPLOYEE',
   id,
   updates
 });
 
-// REMOVE_EMPLOYEE
+/**
+ * Remove Employee Action Generator
+ * Returns an action with data to remove an employee from the store
+ * @param {Object} payload includes the id of the employee to remove 
+ */
 const removeEmployee = ({id}) => ({
   type: 'REMOVE_EMPLOYEE',
   id
 });
 
-//
-// Reducer
-//
-const store = createStore((state = {}, action) => {
+/**
+ * Employee Reducer
+ * Responsible for interacting with employees in the store
+ */
+const employeeStore = createStore((state = {}, action) => {
   switch (action.type) {
     case 'ADD_EMPLOYEE':
       const {id, name, checkpoints} = action;
@@ -56,11 +69,4 @@ const store = createStore((state = {}, action) => {
   }
 });
 
-
-const demoEmployees = {
-  employee1234567890: {
-    id: 'employee1234567890',
-    name: 'Aaron',
-    checkpoints: ['checkpoint0', 'checkpoint1', 'checkpoint2']
-  }
-};
+export default employeeStore;
