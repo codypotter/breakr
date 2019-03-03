@@ -2,7 +2,7 @@
 //   employeeCategory1234567890: {
 //     id: 'employeeCategory1234567890',
 //     title: 'Cashiers',
-//     employees: ['employee1234567890']
+//     employeeIds: ['employee1234567890']
 //   }
 // };
 
@@ -13,11 +13,7 @@
 export default (state = {}, action) => {
   switch (action.type) {
     case 'ADD_EMPLOYEE_CATEGORY':
-      const {
-        id,
-        title,
-        employeeIds
-      } = action;
+      const { id, title, employeeIds } = action;
       return {
         ...state,
         [id]: {
@@ -30,6 +26,7 @@ export default (state = {}, action) => {
       return {
         ...state,
         [action.id]: {
+          ...state[action.id],
           ...action.updates
         }
       }
@@ -40,6 +37,14 @@ export default (state = {}, action) => {
           result[current] = state[current];
           return result;
         }, {});
+    case 'REMOVE_EMPLOYEE_FROM_CATEGORY':
+      return {
+        ...state,
+        [action.employeeCategoryId]: {
+          ...state.action.employeeCategoryId,
+          employeeIds: state[action.employeeCategoryId].employeeIds.filter(employeeId => employeeId !== action.employeeId)
+        }
+      }
     default:
       return state;
   }

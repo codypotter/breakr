@@ -1,13 +1,12 @@
 /**
- * Add Employee Category Action Generator
+ * Add Employee Category Action Generator - 
  * Returns an action with data to add a new employee category to the store
- * @param {object} payload includes the id, title, and employee ids array 
+ * @param {*}             payload -               includes the employee category data
+ * @param {string}        payload.id -            the id of the employee category to add
+ * @param {string}        [payload.title] -       the title of the employee category to add
+ * @param {Array<string>} [payload.employeeIds] - the array of employeeIds
  */
-export const addEmployeeCategory = ({
-  id,
-  title,
-  employeeIds
-}) => ({
+export const addEmployeeCategory = ({ id, title="", employeeIds=[] }) => ({
   type: 'ADD_EMPLOYEE_CATEGORY',
   id,
   title,
@@ -15,10 +14,10 @@ export const addEmployeeCategory = ({
 });
 
 /**
- * Edit Employee Category Action Generator
+ * Edit Employee Category Action Generator -
  * Returns an action with data to edit an employee category in the store
- * @param {string} id the employee category id
- * @param {Object} updates the updates for the employee category
+ * @param {string}  id -      the employee category id to edit
+ * @param {*}       updates - the updates for the employee category
  */
 export const editEmployeeCategory = (id, updates) => ({
   type: 'EDIT_EMPLOYEE_CATEGORY',
@@ -27,11 +26,24 @@ export const editEmployeeCategory = (id, updates) => ({
 });
 
 /**
- * Remove Employee Category Action Generator
- * Returns an action with data to remove an employee from the store
- * @param {Object} payload includes the id of the employee to remove 
+ * Remove Employee Category Action Generator -
+ * Returns an action with data to remove an employee category from the store
+ * @param {string} id - the id of the employee category to remove 
  */
-export const removeEmployee = ({id}) => ({
+export const removeEmployeeCategory = (id) => ({
   type: 'REMOVE_EMPLOYEE_CATEGORY',
   id
+});
+
+/**
+ * Remove Employee From Category Action Generator -
+ * Returns an action with data to remove an employee from an employee category
+ * @param {*}       payload -                     includes the data to remove an employee from a category
+ * @param {string}  payload.employeeCategoryId -  the id of the category to edit 
+ * @param {string}  payload.employeeId -          the id of the employee to remove
+ */
+export const removeEmployeeFromCategory = ({ employeeCategoryId, employeeId }) => ({
+  type: 'REMOVE_EMPLOYEE_FROM_CATEGORY',
+  employeeCategoryId,
+  employeeId
 });
