@@ -1,6 +1,5 @@
-
 /**
- * Employee Reducer
+ * Employees Reducer - 
  * Responsible for interacting with employees in the store
  */
 export default (state = {}, action) => {
