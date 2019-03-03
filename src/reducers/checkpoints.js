@@ -32,13 +32,7 @@
 export default (state = {}, action) => {
   switch (action.type) {
     case 'ADD_CHECKPOINT':
-      const {
-        id,
-        length,
-        time,
-        type,
-        complete
-      } = action;
+      const { id, length, time, type, complete } = action;
       return {
         ...state,
         byId: {
