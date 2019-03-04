@@ -45,6 +45,14 @@ export default (state = {}, action) => {
           employeeIds: state[action.employeeCategoryId].employeeIds.filter(employeeId => employeeId !== action.employeeId)
         }
       }
+    case 'ADD_EMPLOYEE_TO_CATEGORY':
+      return {
+        ...state,
+        [action.employeeCategoryId]: {
+          ...state[action.employeeCategoryId],
+          employeeIds: state[action.employeeCateoryId].employeeIds.concat(action.employeeId)
+        }
+      }
     default:
       return state;
   }

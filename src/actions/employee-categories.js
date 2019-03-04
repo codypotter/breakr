@@ -47,3 +47,16 @@ export const removeEmployeeFromCategory = ({ employeeCategoryId, employeeId }) =
   employeeCategoryId,
   employeeId
 });
+
+/**
+ * Add Employee To Category Action Generator - 
+ * Returns an action with data to add an employee to an employee category
+ * @param {*}       payload -                     the data to add an employee to a category
+ * @param {string}  payload.employeeCategoryId -  the id of the category to edit
+ * @param {string}  payload.employeeId -          the id of the employee to add
+ */
+export const addEmployeeToCategory = ({ employeeCategoryId, employeeeId }) => ({
+  type: 'ADD_EMPLOYEE_TO_CATEGORY',
+  employeeCategoryId,
+  employeeId
+});
