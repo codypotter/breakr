@@ -1,5 +1,5 @@
 // const demoDay = {
-//   id: '05122018',
+//   date: '05122018',
 //   noteCategories: ['noteCategory1234567890'],
 //   employeeCategories: ['employeeCategory1234567890']
 // };
@@ -10,7 +10,7 @@
  */
 export default (state = {}, action) => {
   switch (action.type) {
-    case 'UPDATE_DAY':
+    case 'ADD_CATEGORIES':
       return {
         ...state,
         noteCategories: [
@@ -21,6 +21,11 @@ export default (state = {}, action) => {
           ...state.employeeCategories,
           ...action.updates.employeeCategories
         ]
+      }
+    case 'CHANGE_DATE':
+      return {
+        ...state,
+        date: action.date
       }
     case 'CLEAR_DAY':
       return {};
