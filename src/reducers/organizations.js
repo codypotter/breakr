@@ -15,10 +15,7 @@
 export default (state = {}, action) => {
   switch (action.type) {
     case 'ADD_ORGANIZATION':
-      const {
-        id,
-        name
-      } = action;
+      const { id, name } = action;
       return {
         ...state,
         byId: {
