@@ -8,7 +8,11 @@
  * Day Reducer
  * Responsible for interacting with the day in the store
  */
-export default (state = {}, action) => {
+export default (state = {
+  date: null,
+  noteCategories: [],
+  employeeCategories: []
+}, action) => {
   switch (action.type) {
     case 'ADD_CATEGORIES':
       return {

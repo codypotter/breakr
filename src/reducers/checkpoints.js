@@ -29,10 +29,13 @@
  * Checkpoints Reducer
  * Interacts with checkpoints in the store
  */
-export default (state = {}, action) => {
+export default (state = {
+  byId: {},
+  allIds: []
+}, action) => {
   switch (action.type) {
     case 'ADD_CHECKPOINT':
-      const { id, length, time, type, complete } = action;
+      const { id, length, time, name, complete } = action;
       return {
         ...state,
         byId: {
@@ -41,7 +44,7 @@ export default (state = {}, action) => {
             id,
             length,
             time,
-            type,
+            name,
             complete
           }
         },

@@ -12,7 +12,10 @@
  * Organizations Reducer
  * Interacts with employee categories in the store
  */
-export default (state = {}, action) => {
+export default (state = {
+  byId: {}, 
+  allIds: []
+}, action) => {
   switch (action.type) {
     case 'ADD_ORGANIZATION':
       const { id, name } = action;

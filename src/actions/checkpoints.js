@@ -8,12 +8,12 @@
  * @param {number}  payload.length -    the length of the checkpoint
  * @param {boolean} payload.complete -  true when checkpoint is complete
  */
-export const addCheckpoint = ({ id, time, type, length=0, complete=false }) => ({
+export const addCheckpoint = ({ id, time, name, length=0, complete=false }) => ({
   type: 'ADD_CHECKPOINT',
   id,
   length,
   time,
-  type,
+  name,
   complete
 });
 

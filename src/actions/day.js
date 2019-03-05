@@ -8,7 +8,7 @@
  *    employeeCategories: ['345', '456']
  *  })
  */
-const addCategories = (updates) => ({
+export const addCategories = (updates) => ({
   type: 'ADD_CATEGORIES',
   updates
 });
@@ -17,7 +17,7 @@ const addCategories = (updates) => ({
  * Clears Day Action Generator -
  * Returns an action with data to clear the day from the store
  */
-const clearDay = () => ({
+export const clearDay = () => ({
   type: 'CLEAR_DAY'
 });
 
@@ -26,7 +26,7 @@ const clearDay = () => ({
  * Returns an action with data to change the date in the store
  * @param {string} date the date string of the selected date to display
  */
-const changeDate = (date) => ({
+export const changeDate = (date) => ({
   type: 'CHANGE_DATE',
   date
 });
@@ -38,7 +38,7 @@ const changeDate = (date) => ({
  * @example 
  *  removeItem({noteCategories: 'noteCategory1234567890'});
  */
-const removeItem = (itemToRemove) => ({
+export const removeItem = (itemToRemove) => ({
   type: 'REMOVE_ITEM',
   itemToRemove
 });
