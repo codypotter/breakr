@@ -25,12 +25,12 @@ export default (state = {
           ...state.employeeCategories,
           ...action.updates.employeeCategories
         ]
-      }
+      };
     case 'CHANGE_DATE':
       return {
         ...state,
         date: action.date
-      }
+      };
     case 'CLEAR_DAY':
       return {};
     case 'REMOVE_ITEM':
@@ -42,7 +42,7 @@ export default (state = {
         noteCategories: [...state.noteCategories],
         employeeCategories: [...state.employeeCategories],
         [keyToUpdate]: state[keyToUpdate].filter(element => element !== propertyToRemove)
-      }
+      };
     default:
       return state;
   }

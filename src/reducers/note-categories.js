@@ -1,9 +1,11 @@
-// const demoNoteCategories = {
-//   noteCategory1234567890: {
-//     title: 'OBRC',
-//     noteIds: ['note1234567890']
-//   }
-// };
+/*
+ const demoNoteCategories = {
+   noteCategory1234567890: {
+     title: 'OBRC',
+     noteIds: ['note1234567890']
+   }
+ };
+*/
 
 /**
  * Note Category Reducer
@@ -28,7 +30,7 @@ export default (state = {}, action) => {
           ...state[action.id],
           ...action.updates
         }
-      }
+      };
     case 'REMOVE_NOTE_CATEGORY':
       return Object.keys(state)
         .filter(key => key !== action.id)
@@ -43,7 +45,7 @@ export default (state = {}, action) => {
           ...state[action.noteCategoryId],
           noteIds: state[action.noteCategoryId].noteIds.filter(noteId => noteId !== action.noteId)
         }
-      }
+      };
     case 'ADD_NOTE_TO_CATEGORY':
       return {
         ...state,
@@ -51,7 +53,7 @@ export default (state = {}, action) => {
           ...state[action.noteCategoryId],
           noteIds: state[action.noteCateoryId].noteIds.concat(action.noteId)
         }
-      }
+      };
     default:
       return state;
   }

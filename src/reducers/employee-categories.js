@@ -29,7 +29,7 @@ export default (state = {}, action) => {
           ...state[action.id],
           ...action.updates
         }
-      }
+      };
     case 'REMOVE_EMPLOYEE_CATEGORY':
       return Object.keys(state)
         .filter(key => key !== action.id)
@@ -44,7 +44,7 @@ export default (state = {}, action) => {
           ...state.action.employeeCategoryId,
           employeeIds: state[action.employeeCategoryId].employeeIds.filter(employeeId => employeeId !== action.employeeId)
         }
-      }
+      };
     case 'ADD_EMPLOYEE_TO_CATEGORY':
       return {
         ...state,
@@ -52,7 +52,7 @@ export default (state = {}, action) => {
           ...state[action.employeeCategoryId],
           employeeIds: state[action.employeeCateoryId].employeeIds.concat(action.employeeId)
         }
-      }
+      };
     default:
       return state;
   }

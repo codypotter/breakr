@@ -21,7 +21,7 @@ export default (state = {}, action) => {
           ...state[action.id],
           ...action.updates
         }
-      }
+      };
     case 'REMOVE_EMPLOYEE':
       return Object.keys(state)
         .filter(key => key !== action.id)

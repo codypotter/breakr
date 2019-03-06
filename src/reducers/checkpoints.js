@@ -66,7 +66,7 @@ export default (state = {
         allIds: [
           ...state.allIds
         ]
-      }
+      };
     case 'REMOVE_CHECKPOINT':
       return {
         ...state,
@@ -78,7 +78,7 @@ export default (state = {
             }, {})
         ,
         allIds: state.allIds.filter((id) => id !== action.id)
-      }
+      };
     default:
       return state;
   }

@@ -1,10 +1,12 @@
 
-// const demoNotes = {
-//   note1234567890: {
-//     id: 'note1234567890',
-//     text: 'Had to trespass a canner today',
-//   }
-// };
+/*
+ const demoNotes = {
+   note1234567890: {
+     id: 'note1234567890',
+     text: 'Had to trespass a canner today',
+   }
+ };
+*/
 
 /**
  * Notes Reducer
@@ -28,7 +30,7 @@ export default (state = {}, action) => {
           ...state[action.id],
           ...action.updates
         }
-      }
+      };
     case 'REMOVE_NOTE':
       return Object.keys(state)
         .filter(key => key !== action.id)
