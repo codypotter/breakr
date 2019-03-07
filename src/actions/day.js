@@ -32,6 +32,17 @@ export const changeDate = (date) => ({
 });
 
 /**
+ * Change Organization Action Generator -
+ * Returns an action with data to change the organization in the store
+ * @param organizationId - the id of the organization to change to
+ * @returns {{organization: *, type: string}}
+ */
+export const changeOrganization = (organizationId) => ({
+  type: 'CHANGE_ORGANIZATION',
+  organizationId
+});
+
+/**
  * Remove Item -
  * Returns an action with data to remove an item from the store
  * @param {*} itemToRemove - object with key and value matching the value to be removed

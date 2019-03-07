@@ -36,7 +36,10 @@ export default (state = {
         ]
       };
     case 'CLEAR_ORGANIZATIONS':
-      return {};
+      return {
+        byId: {},
+        allIds: []
+      };
     default:
       return state;
   }

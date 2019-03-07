@@ -38,6 +38,8 @@ export default (state = {}, action) => {
           result[current] = state[current];
           return result;
         }, {});
+    case 'CLEAR_NOTES':
+      return {};
     default:
       return state;
   }

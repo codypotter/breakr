@@ -34,3 +34,12 @@ export const removeEmployee = (id) => ({
   type: 'REMOVE_EMPLOYEE',
   id
 });
+
+/**
+ * Clear Employees Action Generator -
+ * Returns an action with data to clear all employees
+ * @returns {{type: string}}
+ */
+export const clearEmployees = () => ({
+  type: 'CLEAR_EMPLOYEES'
+});

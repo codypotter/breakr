@@ -1,96 +1,62 @@
 import React from "react";
+import {connect} from 'react-redux';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import moment from 'moment';
+import {changeDate, changeOrganization} from "../actions/day";
+import {clearCheckpoints} from "../actions/checkpoints";
+import {clearEmployeeCategories} from "../actions/employee-categories";
+import {clearEmployees} from "../actions/employees";
+import {clearNoteCategories} from "../actions/note-categories";
+import {clearNotes} from "../actions/notes";
 
-/** Class representing a Header subclassed from React.Component */
-export default class Header extends React.Component {
-  /**
-   * 
-   * @param {object}  props - React props
-   * @param {string}  props.date - current date in YYYY-MM-DD format
-   * @param {string}  props.organization - name of the active organization
-   * @param {Array}   props.organizations - Array of available organization names 
-   * 
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: this.props.date,
-      organization: this.props.organization,
-      organizations: this.props.organizations
-    };
+const Header = (props) => (
+  <Navbar expand="lg" bg="primary" variant="dark">
+    <Navbar.Brand href="#">fifteen30</Navbar.Brand>
+    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+    <Navbar.Collapse id="responsive-navbar-nav">
+      <Nav className="mr-auto">
+        <NavDropdown title={props.organizations.byId[props.day.organization].name} id="collapsible-nav-dropdown">
+          {
+            props.organizations.allIds.map((org) => (
+              <NavDropdown.Item
+                onSelect={(eventKey) => {
+                  props.dispatch(changeOrganization(eventKey));
+                  props.dispatch(clearCheckpoints());
+                  props.dispatch(clearEmployeeCategories());
+                  props.dispatch(clearEmployees());
+                  props.dispatch(clearNoteCategories());
+                  props.dispatch(clearNotes());
+                }}
+                eventKey={org}
+                key={org}
+                href="#"
+              >
+                {props.organizations.byId[org].name}
+              </NavDropdown.Item>
+            ))
+          }
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="/create">Create</NavDropdown.Item>
+        </NavDropdown>
+        <input type="date" value={props.day.date} onChange={(e) => {
+          props.dispatch(changeDate(e.target.value));
+        }} />
+      </Nav>
+      <Nav>
+        <Nav.Link onClick={() => {
+          console.log('logging out...');
+        }} >logout</Nav.Link>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
+);
 
-    /* class methods */
-    this.handleDateChange = this.handleDateChange.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
-    this.handleOrganizationChange = this.handleOrganizationChange.bind(this);
-  }
+const mapStateToProps = (state) => {
+  return {
+    organizations: state.organizations,
+    day: state.day
+  };
+};
 
-  /**
-   * Handle the next
-   * @param {*} event 
-   */
-  handleDateChange(event) {
-    this.setState({
-      ...this.state,
-      date: event.target.value
-    });
-    this.props.onDateChange(event.target.value);
-  }
-
-  handleLogout(event) {
-    console.log('Logging out...');
-  }
-
-  handleOrganizationChange(eventKey) {
-    this.setState({
-      ...this.state,
-      organization: eventKey
-    });
-    console.log(eventKey);
-  }
-
-  render() {
-    return (
-      <Navbar expand="lg" bg="primary" variant="dark">
-        <Navbar.Brand href="#">fifteen30</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <NavDropdown title={this.state.organization} id="collapsible-nav-dropdown">
-              {
-                this.state.organizations.map((org) => (
-                  <NavDropdown.Item 
-                    onSelect={this.handleOrganizationChange} 
-                    eventKey={org.key} 
-                    key={org.key} 
-                    href="#"
-                    >
-                    {org.title}
-                  </NavDropdown.Item>
-                ))
-              }
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">Create</NavDropdown.Item>
-            </NavDropdown>
-            <input type="date" value={this.state.date} onChange={this.handleDateChange} />
-          </Nav>
-          <Nav>
-            <Nav.Link onClick={this.handleLogout} >logout</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    );
-  }
-}
-
-Header.defaultProps = {
-  organization: "Organization",
-  organizations: [{
-    key: "1",
-    title: "Whole Foods Laurelhurst"
-  }],
-  date: moment().format("YYYY-MM-DD")
-}
+export default connect(mapStateToProps)(Header);

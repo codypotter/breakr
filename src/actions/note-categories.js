@@ -68,3 +68,11 @@ export const addNoteToCategory = ({ noteCategoryId, noteId }) => ({
   noteCategoryId,
   noteId
 });
+
+/**
+ * Clear Note Categories Action Generator -
+ * @returns {{type: string}}
+ */
+export const clearNoteCategories = () => ({
+  type: 'CLEAR_NOTE_CATEGORIES'
+});

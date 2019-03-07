@@ -4,7 +4,7 @@
  * @param {*}       payload -           includes checkpoint data 
  * @param {string}  payload.id -        the id of the checkpoint
  * @param {number}  payload.time -      the timestamp of the checkpoint
- * @param {string}  payload.type -      the type of checkpoint
+ * @param {string}  payload.name -      the name of the checkpoint
  * @param {number}  payload.length -    the length of the checkpoint
  * @param {boolean} payload.complete -  true when checkpoint is complete
  */
@@ -27,6 +27,15 @@ export const editCheckpoint = (id, updates) => ({
   type: 'EDIT_CHECKPOINT',
   id,
   updates
+});
+
+/**
+ * Clear Checkpoints Action Generator -
+ * Returns an action with data to clear all checkpoints
+ * @returns {{type: string}}
+ */
+export const clearCheckpoints = () => ({
+  type: 'CLEAR_CHECKPOINTS'
 });
 
 /**

@@ -67,6 +67,11 @@ export default (state = {
           ...state.allIds
         ]
       };
+    case 'CLEAR_CHECKPOINTS':
+      return {
+        byId: {},
+        allIds: []
+      };
     case 'REMOVE_CHECKPOINT':
       return {
         ...state,

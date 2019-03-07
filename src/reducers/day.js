@@ -1,5 +1,6 @@
 // const demoDay = {
 //   date: '05122018',
+//   organization: 'organization1234567890',
 //   noteCategories: ['noteCategory1234567890'],
 //   employeeCategories: ['employeeCategory1234567890']
 // };
@@ -30,6 +31,13 @@ export default (state = {
       return {
         ...state,
         date: action.date
+      };
+    case 'CHANGE_ORGANIZATION':
+      return {
+        ...state,
+        organization: action.organizationId,
+        noteCategories: [],
+        employeeCategories: []
       };
     case 'CLEAR_DAY':
       return {};

@@ -29,9 +29,17 @@ export const editNote = (id, updates) => ({
 /**
  * Remove Note Action Generator -
  * Returns an action with data to remove a note from the store
- * @param {Object} payload includes the id of the note to remove 
+ * @param {string} id - the id of the note to remove
  */
 export const removeNote = (id) => ({
   type: 'REMOVE_NOTE',
   id
+});
+
+/**
+ * Clear Notes Action Generator -
+ * @returns {{type: string}}
+ */
+export const clearNotes = () => ({
+  type: 'CLEAR_NOTES'
 });

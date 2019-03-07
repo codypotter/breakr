@@ -29,6 +29,8 @@ export default (state = {}, action) => {
           result[current] = state[current];
           return result;
       }, {});
+    case 'CLEAR_EMPLOYEES':
+      return {};
     default:
       return state;
   }

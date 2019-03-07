@@ -54,6 +54,8 @@ export default (state = {}, action) => {
           noteIds: state[action.noteCateoryId].noteIds.concat(action.noteId)
         }
       };
+    case 'CLEAR_NOTE_CATEGORIES':
+      return {};
     default:
       return state;
   }

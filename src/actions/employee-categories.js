@@ -55,8 +55,12 @@ export const removeEmployeeFromCategory = ({ employeeCategoryId, employeeId }) =
  * @param {string}  payload.employeeCategoryId -  the id of the category to edit
  * @param {string}  payload.employeeId -          the id of the employee to add
  */
-export const addEmployeeToCategory = ({ employeeCategoryId, employeeeId }) => ({
+export const addEmployeeToCategory = ({ employeeCategoryId, employeeId }) => ({
   type: 'ADD_EMPLOYEE_TO_CATEGORY',
   employeeCategoryId,
   employeeId
+});
+
+export const clearEmployeeCategories = () => ({
+  type: 'CLEAR_EMPLOYEE_CATEGORIES'
 });

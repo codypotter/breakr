@@ -50,9 +50,11 @@ export default (state = {}, action) => {
         ...state,
         [action.employeeCategoryId]: {
           ...state[action.employeeCategoryId],
-          employeeIds: state[action.employeeCateoryId].employeeIds.concat(action.employeeId)
+          employeeIds: state[action.employeeCategoryId].employeeIds.concat(action.employeeId)
         }
       };
+    case 'CLEAR_EMPLOYEE_CATEGORIES':
+      return {};
     default:
       return state;
   }
