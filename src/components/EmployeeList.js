@@ -1,11 +1,11 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Container from 'react-bootstrap/Container';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import {connect} from "react-redux";
+import Employee from "./Employee";
 
 
-export default class EmployeeList extends React.Component {
+class EmployeeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,26 +15,28 @@ export default class EmployeeList extends React.Component {
 
   render() {
     return (
-      <Container>
-        
-        <h5>Cashiers</h5>
-        <ListGroup>
-          <ListGroup.Item variant="success">
-            Sean - On Break
-            <ProgressBar variant="success" now="10" label="Send Break @5:45 pm" />
-          </ListGroup.Item>
-          <ListGroup.Item>
-            Becki
-            <ProgressBar variant="danger" now="90" label="Send Home @4:00 pm" />
-          </ListGroup.Item>
-          <ListGroup.Item>
-            Lorrie
-            <ProgressBar variant="warning" now="75" label="Send Break @4:20 pm" />
-          </ListGroup.Item>
-        </ListGroup>  
-        
-        <Button variant="light" size="sm" block>Show Details</Button>
-      </Container>
+      <div>
+        {this.props.day.employeeCategories.map((employeeCategory) => (
+          <div key={employeeCategory}>
+            <h5>{this.props.employeeCategories[employeeCategory].title}</h5>
+            <ListGroup>
+              {this.props.employeeCategories[employeeCategory].employeeIds.map((employeeId, key) => (
+                <Employee key={key} id={employeeId} />))}
+            </ListGroup>
+          </div>
+        ))}
+        <Button variant="light" size="sm" block>Add Employee</Button>
+      </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    day: state.day,
+    employeeCategories: state.employeeCategories,
+    employees: state.employees
+  };
+};
+
+export default connect(mapStateToProps)(EmployeeList);

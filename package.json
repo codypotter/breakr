@@ -20,6 +20,7 @@
     "bootstrap": "^4.3.1",
     "create-react-class": "^15.6.3",
     "jquery": "^3.3.1",
+    "js-joda": "^1.9.3",
     "moment": "^2.24.0",
     "popper.js": "^1.14.7",
     "prop-types": "^15.7.2",

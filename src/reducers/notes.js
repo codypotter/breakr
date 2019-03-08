@@ -9,7 +9,7 @@
 */
 
 /**
- * Notes Reducer
+ * NoteList Reducer
  * Responsible for interacting with notes in the store
  */
 export default (state = {}, action) => {

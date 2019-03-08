@@ -37,7 +37,7 @@ export const removeNote = (id) => ({
 });
 
 /**
- * Clear Notes Action Generator -
+ * Clear NoteList Action Generator -
  * @returns {{type: string}}
  */
 export const clearNotes = () => ({
