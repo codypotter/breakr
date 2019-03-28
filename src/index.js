@@ -11,7 +11,9 @@ import './styles/index.scss';
 import {addNote} from "./actions/notes";
 import {addNoteCategory} from "./actions/note-categories";
 import {addCategories, changeDate, changeOrganization} from "./actions/day";
-import {LocalDate} from 'js-joda';
+import 'js-joda-timezone';
+import {Locale} from '@js-joda/locale_en-us';
+import {DateTimeFormatter, LocalDate, LocalTime} from 'js-joda';
 
 const store = configureStore();
 
@@ -26,8 +28,8 @@ store.dispatch(addOrganization({id: 'organization1', name: 'Laurelhurst'}));
 store.dispatch(addOrganization({id:'organization2', name:'Long Beach'}));
 
 // Set up checkpoints
-store.dispatch(addCheckpoint({id:'checkpoint1', time:0, name:'start'}));
-store.dispatch(addCheckpoint({id:'checkpoint2', time:1, name:'end'}));
+store.dispatch(addCheckpoint({id:'checkpoint1', time:LocalTime.parse('00:00').format(DateTimeFormatter.ofPattern('h.mm a').withLocale(Locale.US)).toString(), name:'start'}));
+store.dispatch(addCheckpoint({id:'checkpoint2', time:LocalTime.parse('16:00').format(DateTimeFormatter.ofPattern('h.mm a').withLocale(Locale.US)).toString(), name:'end'}));
 
 // Set up employees
 store.dispatch(addEmployee({id:'employeeid1', name: 'Cody Potter', checkpoints:['checkpoint1', 'checkpoint2']}));
@@ -35,8 +37,8 @@ store.dispatch(addEmployee({id:'employeeid2', name: 'Cierra Cook', checkpoints:[
 store.dispatch(addEmployee({id:'employeeid3', name:'Jacy Church', checkpoints:['checkpoint1', 'checkpoint2']}));
 
 // Set up employee categories
-store.dispatch(addEmployeeCategory({id:'employeeCategory1', title:'Shift Leaders', employeeIds:['employeeid1']}));
-store.dispatch(addEmployeeCategory({id:'employeeCategory2', title:'STL', employeeIds:['employeeid2', 'employeeid3']}));
+store.dispatch(addEmployeeCategory({id:'employeeCategory1', title:'Shift Leaders', employeeIds:['employeeid1', 'employeeid3']}));
+store.dispatch(addEmployeeCategory({id:'employeeCategory2', title:'STL', employeeIds:['employeeid2']}));
 
 // Set up notes
 store.dispatch(addNote({id:'note1', text:'Had to ask a canner to leave today'}));

@@ -1,31 +1,39 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {connect} from "react-redux";
-import Employee from "./Employee";
+import EmployeeCategory from "./EmployeeCategory";
+import NewEmployeeCategoryModal from "./NewEmployeeCategoryModal";
 
 
 class EmployeeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      showEmployeeModal: false
     };
   }
+
+  handleEmployeeModalExit = exitType => (e) => {
+    if (exitType === 'save') {
+      //TODO: handle save new note
+    }
+    this.setState({...this.state, showEmployeeModal: false});
+  };
 
   render() {
     return (
       <div>
-        {this.props.day.employeeCategories.map((employeeCategory) => (
-          <div key={employeeCategory}>
-            <h5>{this.props.employeeCategories[employeeCategory].title}</h5>
-            <ListGroup>
-              {this.props.employeeCategories[employeeCategory].employeeIds.map((employeeId, key) => (
-                <Employee key={key} id={employeeId} />))}
-            </ListGroup>
-          </div>
-        ))}
-        <Button variant="light" size="sm" block>Add Employee</Button>
+        <ListGroup>
+          <ListGroup.Item className="text-center text-light bg-primary" action onClick={() => {this.setState({...this.state, showEmployeeModal: true})}}>
+            Add New Role
+          </ListGroup.Item>
+          {this.props.day.employeeCategories.map((categoryId) => (
+            <ListGroup.Item key={categoryId} >
+              <EmployeeCategory id={categoryId} />
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+        <NewEmployeeCategoryModal showEmployeeModal={this.state.showEmployeeModal} handleExit={this.handleEmployeeModalExit} />
       </div>
     );
   }

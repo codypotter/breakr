@@ -12,15 +12,19 @@
     "build": "parcel build src/index.html"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.3",
-    "babel-plugin-react": "^1.0.0",
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
     "parcel-bundler": "^1.11.0"
   },
   "dependencies": {
+    "@js-joda/locale_en-us": "^2.0.1",
     "bootstrap": "^4.3.1",
     "create-react-class": "^15.6.3",
     "jquery": "^3.3.1",
     "js-joda": "^1.9.3",
+    "js-joda-timezone": "^2.0.2",
     "moment": "^2.24.0",
     "popper.js": "^1.14.7",
     "prop-types": "^15.7.2",
