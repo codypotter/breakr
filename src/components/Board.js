@@ -9,16 +9,18 @@ export default class Board extends React.Component {
 
   render() {
     return (
-      <Container className="mt-3">
-        <Row>
-          <Col>
-            <EmployeeList />
-          </Col>
-          <Col>
-            <NoteList />
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <Container className="mt-3">
+          <Row>
+            <Col>
+              <EmployeeList />
+            </Col>
+            <Col>
+              <NoteList />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
 }

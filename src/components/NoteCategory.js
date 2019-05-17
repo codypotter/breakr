@@ -15,6 +15,17 @@ class NoteCategory extends React.Component {
     };
   }
 
+  handleAddNote = (e) => {
+    // create a new blank note and add to redux
+    // add note id to noteCategories[noteCategoryId].noteIDs array
+    // should load automatically into list
+  };
+
+  handleDeleteNoteCategory = () => {
+    // remove note category id from day
+    // remove note category from redux
+  };
+
   render() {
     return(
       <div onClick={() => { this.setState({...this.state, showNoteCategoryDetails: !this.state.showNoteCategoryDetails});}}>
@@ -23,11 +34,12 @@ class NoteCategory extends React.Component {
         <Collapse in={this.state.showNoteCategoryDetails} >
           <Container className="mt-2" fluid>
             <Row>
-              <Col xs={8}><Button size="sm" block >Add Note</Button></Col>
-              <Col><Button variant="outline-danger" size="sm" block >Delete Topic</Button></Col>
+              <Col xs={8} onClick={this.handleAddNote} ><Button size="sm" block >Add Note</Button></Col>
+              <Col><Button variant="outline-danger" size="sm" block onClick={this.handleDeleteNoteCategory} >Delete Topic</Button></Col>
             </Row>
           </Container>
         </Collapse>
+
       </div>
     );
   }

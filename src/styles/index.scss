@@ -1,19 +1,75 @@
 
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
-// $theme-colors: (
-//   "primary": #9b7d4f,
-//   "secondary": #C9D6DF,
-//   "info": #2b261f,
-//   "success": #64a050,
-//   "warning": #e19018,
-//   "danger": #f44336,
-//   "light": #FAFAFA,
-//   "dark": #4E4E4E
-// );
+button {
+ border: none;
+ font: inherit;
+ color: inherit;
+ background-color: transparent;
+}
 
-// $body-bg: #2a3442;
-// $body-color: white;
+ $theme-colors: (
+   "primary": #9b7d4f,
+   "secondary": #514663,
+   "info": #2b261f,
+   "success": #8CBA80,
+   "warning": #e19018,
+   "danger": #f44336,
+   "light": #FAFAFA,
+   "dark": #4E4E4E
+ );
 
- @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+$progress-font-size: $font-size-base;
+$progress-bar-color: black;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+ background: #f7f7f7;
+ font-family: "Comfortaa", cursive;
+}
+
+.list-group-item {
+ border-style: none;
+}
+
+.col-no-padding {
+ padding: 0;
+}
+
+.logo-image {
+  position: absolute;
+  z-index: -1;
+}
+
+.icon {
+ stroke: #514663;
+}
+
+.trash-icon:hover {
+ stroke: #EB5B5B;
+}
+
+.edit-icon:hover {
+ stroke: #D3C333;
+}
+
+.plus-circle-icon:hover {
+ stroke: #6CD052;
+}
+
+.progress-bar-custom {
+ border: 0;
+ border-radius: 5px;
+ height: 3em;
+ margin-top: .5em;
+}
+
+.progress-bar {
+ padding-left: 10px;
+ text-align: left;
+}
+
+

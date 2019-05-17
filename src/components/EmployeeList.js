@@ -23,15 +23,15 @@ class EmployeeList extends React.Component {
   render() {
     return (
       <div>
-        <ListGroup>
-          <ListGroup.Item className="text-center text-light bg-primary" action onClick={() => {this.setState({...this.state, showEmployeeModal: true})}}>
-            Add New Role
-          </ListGroup.Item>
+        <ListGroup className="col-no-padding">
           {this.props.day.employeeCategories.map((categoryId) => (
-            <ListGroup.Item key={categoryId} >
+            <ListGroup.Item key={categoryId}  bsPrefix="list-group-item">
               <EmployeeCategory id={categoryId} />
             </ListGroup.Item>
           ))}
+          <ListGroup.Item  bsPrefix="list-group-item" className="text-center text-light bg-secondary" action onClick={() => {this.setState({...this.state, showEmployeeModal: true})}}>
+            Add New Role
+          </ListGroup.Item>
         </ListGroup>
         <NewEmployeeCategoryModal showEmployeeModal={this.state.showEmployeeModal} handleExit={this.handleEmployeeModalExit} />
       </div>

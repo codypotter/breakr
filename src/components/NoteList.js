@@ -19,7 +19,7 @@ class NoteList extends React.Component {
 
   handleNoteModalExit = exitType => (e) => {
     if (exitType === 'save') {
-      //TODO: handle save new note
+      //TODO: handle save new note category
     }
     this.setState({...this.state, showNoteModal: false});
   };
@@ -28,14 +28,14 @@ class NoteList extends React.Component {
     return (
       <div>
         <ListGroup>
-          <ListGroup.Item className="text-center text-light bg-primary" action onClick={() => { this.setState({...this.state, showNoteModal: true});}}>
-            Add New Topic
-          </ListGroup.Item>
           {this.props.day.noteCategories.map((categoryId) => (
             <ListGroup.Item key={categoryId} >
               <NoteCategory id={categoryId} />
             </ListGroup.Item>
           ))}
+          <ListGroup.Item className="text-center text-light bg-secondary" action onClick={() => { this.setState({...this.state, showNoteModal: true});}}>
+            Add New Topic
+          </ListGroup.Item>
         </ListGroup>
 
         <NewNoteCategoryModal showNoteModal={this.state.showNoteModal} handleExit={this.handleNoteModalExit} />
